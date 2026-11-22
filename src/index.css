@@ -1,0 +1,102 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', 'Cairo', system-ui, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', 'Cairo', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: #090E1A;
+    color: #F1F5F9;
+    scroll-behavior: smooth;
+  }
+
+  [dir="rtl"] body {
+    font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] .font-display {
+    font-family: 'Cairo', 'Outfit', system-ui, sans-serif;
+  }
+
+  .font-mono,
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Shaheen Store animated SVG/CSS Hero keyframes (compositor-only: transform & opacity) */
+@keyframes shaheen-float {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes shaheen-float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -7px, 0);
+  }
+}
+
+@keyframes shaheen-pulse-opacity {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes shaheen-wing-sheen {
+  0%, 100% {
+    opacity: 0.85;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(0, -4px, 0) scale(1.015);
+  }
+}
+
+.animate-shaheen-float {
+  animation: shaheen-float 5.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.animate-shaheen-float-slow {
+  animation: shaheen-float-slow 7s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.animate-shaheen-circuit {
+  animation: shaheen-pulse-opacity 4s ease-in-out infinite;
+}
+
+.animate-shaheen-wing {
+  animation: shaheen-wing-sheen 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shaheen-float,
+  .animate-shaheen-float-slow,
+  .animate-shaheen-circuit,
+  .animate-shaheen-wing {
+    animation: none !important;
+  }
+}
